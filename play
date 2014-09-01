@@ -1,0 +1,3 @@
+#!/bin/sh
+
+./byteplay "$1" | aplay

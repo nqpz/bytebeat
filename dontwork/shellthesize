@@ -1,0 +1,45 @@
+#!/bin/sh
+
+set -e
+
+chr() {
+  printf \\$(printf '%03o' $1)
+}
+
+curtime() {
+    date +%s.%N | sed -r 's/\.((.{3}).*)/\2/'
+}
+
+inputloop() {
+    trap 'stty -cbreak echo' 0 2
+    stty cbreak -echo
+    while [ 1 ]; do
+        c=$(dd if=/dev/tty bs=1 count=1 2>/dev/null)
+        if [ $c = q ]; then
+            break
+        fi
+        echo $c
+    done
+}
+
+soundgen() {
+    start=$(curtime)
+    expected=0
+    while [ 1 ]; do
+        for i in $(seq 0 40); do
+            for j in $(seq 0 199); do
+                chr $v
+            done
+            expected=$(($expected + 25))
+            now=$(curtime)
+            diff=$(($now - $start))
+            echo $(($expected - $diff))
+#            sleep 0.$(printf %03d $((noget)))
+        done
+    done
+}
+
+soundgen &
+genpid=$!
+inputloop && kill $genpid
+wait

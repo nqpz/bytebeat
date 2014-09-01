@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ ! $1 ]; then
+    rlwrap $0 1
+    exit
+fi
+
+while [ 1 ]; do
+    read line;
+    pkill aplay 2>/dev/null
+    ./play "$line" 2>/dev/null &
+done
