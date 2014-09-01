@@ -1,7 +1,7 @@
 bytebeat
 ========
 
-Based on the idea described on http://canonical.org/~kragen/bytebeat/ and
+Based on the idea described on [http://canonical.org/~kragen/bytebeat/]() and
 includes tools for easy experimentation.  "Bytebeat" refers to sound generated
 by simple formulas sent to an audio output.
 
@@ -15,7 +15,7 @@ Installation
 ------------
 
 These tools depend on libtcc to dynamically generate C code for execution;
-download from http://bellard.org/tcc/ .
+download from [http://bellard.org/tcc/]().
 
 Just run `make` afterwards.  Should work on at least some platforms.
 
