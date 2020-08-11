@@ -1,6 +1,6 @@
 CC=gcc
-CFLAGS=-Wall -Wno-parentheses -std=gnu99 -L/usr/local/lib -L/usr/lib
-LDFLAGS=-ldl -ltcc
+CFLAGS=-Wall -Wno-parentheses -std=gnu99 $(shell pkg-config --cflags libtcc)
+LDFLAGS=$(shell pkg-config --libs libtcc)
 
 all: bibgen byteplay clive
 
