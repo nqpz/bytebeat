@@ -1,5 +1,5 @@
 with import <nixpkgs> {};
 
 mkShell {
-  buildInputs = [ pkgconfig tinycc ];
+  buildInputs = [ pkgconfig tinycc sox ];
 }
